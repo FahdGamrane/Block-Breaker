@@ -21,34 +21,9 @@ namespace Tests
             SceneManager.LoadScene(1);
         }
 
-        [UnityTest]
-        public IEnumerator TestScript0Lives()
-        {
-            LoseCollider.lives = 3;
-            while (LoseCollider.lives != 0)
-            {
-                Paddle.paddle.theBall.LaunchWithFunction();
-                yield return new WaitForSeconds(4.0f);
-            }
-            Assert.AreEqual(0, LoseCollider.lives);
-        }
-
 
         [UnityTest]
-        public IEnumerator TestScript1Lives()
-        {
-            LoseCollider.lives = 3;
-            while (LoseCollider.lives != 1)
-            {
-                Paddle.paddle.theBall.LaunchWithFunction();
-                yield return new WaitForSeconds(4.0f);
-            }
-            Assert.AreEqual(1, LoseCollider.lives);
-        }
-
-
-        [UnityTest]
-        public IEnumerator TestScript2Lives()
+        public IEnumerator Test_2vies()
         {
             LoseCollider.lives = 3;
             while (LoseCollider.lives != 2)
@@ -60,10 +35,8 @@ namespace Tests
         }
 
 
-
-
         [UnityTest]
-         public IEnumerator TestScript3Lives()
+         public IEnumerator Test_3vies()
          {
              LoseCollider.lives = 3;
              Paddle.paddle.theBall.LaunchWithFunction();
