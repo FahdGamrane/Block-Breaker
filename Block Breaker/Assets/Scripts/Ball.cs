@@ -11,19 +11,20 @@ public class Ball : MonoBehaviour {
 
     // state
     Vector2 paddleToBallVector;
-    bool hasStarted = false;
+    public bool hasStarted = false;
 
     // Cached component references
     AudioSource myAudioSource;
     Rigidbody2D myRigidBody2D;
 
 	// Use this for initialization
-	void Start ()
+	public void Start ()
     {
         paddleToBallVector = transform.position - paddle1.transform.position;
         myAudioSource = GetComponent<AudioSource>();
         myRigidBody2D = GetComponent<Rigidbody2D>();
-	}
+        paddle1.theBall = this;
+    }
 	
 	// Update is called once per frame
 	void Update ()
@@ -44,7 +45,14 @@ public class Ball : MonoBehaviour {
         }
     }
 
-    private void LockBallToPaddle()
+    public void LaunchWithFunction()
+    {
+        
+        hasStarted = true;
+        myRigidBody2D.velocity = new Vector2(xPush, yPush);
+    }
+
+    public void LockBallToPaddle()
     {
         Vector2 paddlePos = new Vector2(paddle1.transform.position.x, paddle1.transform.position.y);
         transform.position = paddlePos + paddleToBallVector;
